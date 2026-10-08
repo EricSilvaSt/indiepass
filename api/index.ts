@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { swaggerUI } from '@hono/swagger-ui'
+import { handle } from '@hono/vercel'
 import { eventsRouter } from '../src/api/routes/events'
 import { ordersRouter } from '../src/api/routes/orders'
 import { ticketsRouter } from '../src/api/routes/tickets'
@@ -155,4 +156,8 @@ app.get('/api-docs/openapi.json', (c) => {
   })
 })
 
-export default app
+export const GET = handle(app)
+export const POST = handle(app)
+export const PUT = handle(app)
+export const DELETE = handle(app)
+export const PATCH = handle(app)
